@@ -38,7 +38,7 @@ module OmniAuth
       def authorize_params
         super.tap do |params|
           %w[display scope auth_type].each do |v|
-            if request.params[v]
+            if request.params[v] && !request.params[v].empty?
               params[v.to_sym] = request.params[v]
             end
           end
