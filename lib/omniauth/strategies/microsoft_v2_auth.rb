@@ -16,8 +16,9 @@ module OmniAuth
       option :authorize_options, [:scope]
 
       info do
-        { :name       => "#{raw_info['givenName']} #{raw_info['surname']}",
+        { :name       => raw_info['displayName'] || "#{raw_info['givenName']} #{raw_info['surname']}",
           :email      => raw_info['mail'],
+          :phone      => raw_info['mobilePhone'],
           :first_name => raw_info['givenName'],
           :last_name  => raw_info['surname'] }
       end
